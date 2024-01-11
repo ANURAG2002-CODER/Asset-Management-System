@@ -38,6 +38,10 @@ spring.datasource.password=yourpassword
 
 The application will be accessible at ://localhost:8083.
 
+## PostMan URL
+
+> https://documenter.getpostman.com/view/27830551/2s9YsM9qc8
+
 # API Documentation
 
 ## Category Management
