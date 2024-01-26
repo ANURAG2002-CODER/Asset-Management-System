@@ -16,26 +16,26 @@ public class AssetCatagoryController {
     @Autowired
     private AssetCatagoryService catagoryService;
 
-    @GetMapping("/getAll")
+    @GetMapping("")
     public ResponseEntity<List<AssetCatagory>> getAllCatagories(){
         List<AssetCatagory> catagories=catagoryService.getAllCatagories();
         return new ResponseEntity<>(catagories, HttpStatus.OK);
     }
 
-    @GetMapping("/id/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<AssetCatagory> getCatagoryById(@PathVariable int id){
         Optional<AssetCatagory> catagory=catagoryService.getCatagoryById(id);
         return catagory.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(()-> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping("/add")
+    @PostMapping("")
     public ResponseEntity<AssetCatagory> addCatagory(@RequestBody AssetCatagory catagory){
         AssetCatagory savedCatagory=catagoryService.addCatagory(catagory);
         return new ResponseEntity<>(savedCatagory,HttpStatus.CREATED);
     }
 
-    @PutMapping("/delete/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Void> deleteCatagory(@PathVariable int id){
         catagoryService.deleteCatagory(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
