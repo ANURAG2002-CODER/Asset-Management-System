@@ -17,8 +17,9 @@ public class AssetCatagoryController {
     private AssetCatagoryService catagoryService;
 
     @GetMapping("")
-    public ResponseEntity<List<AssetCatagory>> getAllCatagories(){
-        List<AssetCatagory> catagories=catagoryService.getAllCatagories();
+    public ResponseEntity<List<AssetCatagory>> getAllCatagories(@RequestParam(defaultValue = "0") Integer pageNo,
+                                                                @RequestParam(defaultValue = "10") Integer pageSize){
+        List<AssetCatagory> catagories=catagoryService.getAllCatagories(pageNo,pageSize);
         return new ResponseEntity<>(catagories, HttpStatus.OK);
     }
 

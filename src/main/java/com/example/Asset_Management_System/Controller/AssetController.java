@@ -25,14 +25,14 @@ public class AssetController {
         return new ResponseEntity<>(asset, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<Assets> getAssetById(@PathVariable int id){
         Optional<Assets> asset=assetService.getAssetById(id);
         return asset.map(value->new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping("/{assetName}")
+    @GetMapping("/name/{assetName}")
     public ResponseEntity<Assets> findAssetByName(@PathVariable String assetName){
         List<Assets> asset=assetService.searchAssets(assetName);
         return new ResponseEntity<Assets>(HttpStatus.OK);
@@ -44,7 +44,7 @@ public class AssetController {
         return new ResponseEntity<>(savedAsset, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Void> updateAsset(@PathVariable int id, @RequestBody Assets updatedAsset){
         assetService.updateAsset(id,updatedAsset);
         return new ResponseEntity<>(HttpStatus.OK);

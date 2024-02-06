@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface AssetRepository extends JpaRepository<Assets,Integer>, PagingAndSortingRepository<Assets, Integer> {
+public interface AssetRepository extends JpaRepository<Assets,Integer> {
     List<Assets> findByName(String assetName);
 }
