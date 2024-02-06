@@ -19,8 +19,9 @@ public class AssetController {
     private AssetService assetService;
 
     @GetMapping("")
-    public ResponseEntity<List<Assets>> getAllAssets(){
-        List<Assets> asset=assetService.getAllAssets();
+    public ResponseEntity<List<Assets>> getAllAssets(@RequestParam(defaultValue = "0") Integer pageNo,
+                                                     @RequestParam(defaultValue = "10") Integer pageSize){
+        List<Assets> asset=assetService.getAllAssets(pageNo,pageSize);
         return new ResponseEntity<>(asset, HttpStatus.OK);
     }
 
